@@ -8,19 +8,19 @@ class Minutes(models.Model):
 
     # 対応内容　choice型
     MEETING_PURPOSE_CHOICES = (
-        (1, '商談'),
-        (2, '電話'),
-        (3, 'その他'),
+        ('商談', '商談'),
+        ('電話', '電話'),
+        ('その他', 'その他'),
     )
-    meeting_purpose = models.IntegerField(verbose_name="対応内容", choices=MEETING_PURPOSE_CHOICES)
+    meeting_purpose = models.CharField(verbose_name="対応内容", max_length=10, choices=MEETING_PURPOSE_CHOICES)
 
     # 検討ランク　choice型
     MEETING_RANK_CHOICES = (
-        (1, 'A'),
-        (2, 'B'),
-        (3, 'C'),
+        ('A', 'A'),
+        ('B', 'B'),
+        ('C', 'C'),
     )
-    meeting_rank = models.IntegerField(verbose_name="検討ランク", choices=MEETING_RANK_CHOICES)
+    meeting_rank = models.CharField(verbose_name="検討ランク", max_length=10, choices=MEETING_RANK_CHOICES)
 
     # 商談メモ text とりあえず5000上限
     meeting_contents = models.TextField(verbose_name='商談メモ', max_length="5000")
