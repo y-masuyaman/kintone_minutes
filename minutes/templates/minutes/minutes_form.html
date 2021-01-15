@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if object %}
+<h1>議事録の編集</h1>
+{% else %}
+<h1>議事録の作成</h1>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">送信</button>
+</form>
+<a href="{% url 'minutes:list' %}">戻る</a>
+{%endblock%}

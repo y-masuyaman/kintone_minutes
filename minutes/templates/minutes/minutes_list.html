@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>議事録一覧</h1>
+<a href="{% url 'minutes:create' %}">追加</a>
+<table>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">対応日時</th>
+      <th scope="col">対応内容</th>
+      <th scope="col">検討ランク</th>
+      <th scope="col">商談メモ</th>
+      <th scope="col">ネクストアクション</th>
+      <th scope="col">作成日時</th>
+      <th scope="col">更新日時</th>
+      <th scope="col">操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in object_list %}
+    <tr>
+      <td scope="row"><a href="{% url 'minutes:detail' pk=item.id %}">{{ item.id }}</a></td>
+      <td>{{ item.meeting_date }}</td>
+      <td>{{ item.meeting_purpose }}</td>
+      <td>{{ item.meeting_rank }}</td>
+      <td>{{ item.meeting_contents }}</td>
+      <td>{{ item.meeting_next_action }}</td>
+      <td>{{ item.created_at }}</td>
+      <td>{{ item.updated_at }}</td>
+      <td>
+        <a href="{% url 'minutes:update' pk=item.id %}">修正</a>
+        <a href="{% url 'minutes:delete' pk=item.id %}">削除</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{%endblock%}

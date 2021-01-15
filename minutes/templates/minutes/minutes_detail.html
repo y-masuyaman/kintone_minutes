@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>議事録の詳細</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <td>{{ object.id }}</td>
+    </tr>
+    <tr>
+        <th>対応日時</th>
+        <td>{{ object.meeting_date }}</td>
+    </tr>
+        <tr>
+        <th>対応内容</th>
+        <td>{{ object.meeting_purpose }}</td>
+    </tr>
+    <tr>
+        <th>検討ランク</th>
+        <td>{{ object.meeting_rank }}</td>
+    </tr>
+    <tr>
+        <th>商談メモ</th>
+        <td>{{ object.meeting_contents }}</td>
+    </tr>
+    <tr>
+        <th>ネクストアクション</th>
+        <td>{{ object.meeting_next_action }}</td>
+    </tr>
+    <tr>
+        <th>作成日時</th>
+        <td>{{ object.created_at }}</td>
+    </tr>
+    <tr>
+        <th>更新日時</th>
+        <td>{{ object.updated_at }}</td>
+    </tr>
+</table>
+<a href="{% url 'minutes:list' %}">戻る</a>
+{%endblock%}
